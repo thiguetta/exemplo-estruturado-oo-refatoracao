@@ -1,6 +1,6 @@
 #Refatoração
 
-`Refatoração (refactoring)` é um processo e manutenção de código que todo programador deve fazer de tempos em tempos. Esse processo consiste basicamente de 3 Rs:
+`Refatoração (refactoring)` é um processo de manutenção de código que todo programador deve fazer de tempos em tempos. Esse processo consiste basicamente de 3 Rs:
 
 - Renomear variáveis, métodos ou classes para que o código fique mais legível
 - Reorganizar seu código movendo código de uma classe que não faz sentido para outra mais coerente, ou até mesmo indentando ele.
