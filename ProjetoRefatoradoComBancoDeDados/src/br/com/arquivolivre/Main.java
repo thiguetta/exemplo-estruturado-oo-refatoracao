@@ -25,11 +25,11 @@ public class Main {
             opcao = Integer.parseInt(scanner.nextLine());
             switch (opcao) {
                 case 1:
-                    contatoDAO.save(leitor.lerContatoDoTeclado());
+                    contatoDAO.inserir(leitor.lerContatoDoTeclado());
                     break;
                 case 2:
                     System.out.print("Digite o nome da pessoa: ");
-                    List<Contato> contatoPorNome = contatoDAO.findByName(scanner.nextLine());
+                    List<Contato> contatoPorNome = contatoDAO.buscarPorNome(scanner.nextLine());
                     for (Contato contato : contatoPorNome) {
                         System.out.println(contato);
                     }

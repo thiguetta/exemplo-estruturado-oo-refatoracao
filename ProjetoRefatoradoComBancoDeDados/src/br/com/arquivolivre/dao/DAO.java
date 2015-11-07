@@ -4,15 +4,15 @@ import java.util.List;
 
 public interface DAO<T> {
 
-    List<T> findAll();
+    List<T> listarTodos();
 
-    List<T> findByName(String nome);
+    List<T> buscarPorNome(String nome);
 
-    T findById(int id);
-    
-    boolean save(T obj);
-    
-    boolean update(T obj);
-    
-    boolean delete(T obj);
+    T buscarPorId(int id);
+
+    boolean inserir(T obj);
+
+    boolean atualizar(T obj);
+
+    boolean remover(T obj);
 }

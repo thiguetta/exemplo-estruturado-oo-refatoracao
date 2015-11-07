@@ -18,11 +18,11 @@ public class ContatoDAO implements DAO<Contato> {
     }
 
     @Override
-    public List<Contato> findAll() {
+    public List<Contato> listarTodos() {
         List<Contato> contatos = new ArrayList<>();
         try {
-            Statement novoStatement = conector.novoStatement();
-            ResultSet resultado = novoStatement.executeQuery("select * from agenda");
+            Statement consulta = conector.novoStatement();
+            ResultSet resultado = consulta.executeQuery("select * from agenda");
             contatos = popularListaContatos(resultado);
         } catch (SQLException ex) {
             System.out.println("Não foi possivel executar a requisicao.");
@@ -31,11 +31,11 @@ public class ContatoDAO implements DAO<Contato> {
     }
 
     @Override
-    public List<Contato> findByName(String nome) {
+    public List<Contato> buscarPorNome(String nome) {
         List<Contato> contatos = new ArrayList<>();
         try {
             PreparedStatement consulta = conector.prepararStatement("select * from agenda where nome like ?");
-            consulta.setString(1, String.format("%%%s%%",nome));
+            consulta.setString(1, String.format("%%%s%%", nome));
             ResultSet resultado = consulta.executeQuery();
             contatos = popularListaContatos(resultado);
         } catch (SQLException ex) {
@@ -63,7 +63,7 @@ public class ContatoDAO implements DAO<Contato> {
     }
 
     @Override
-    public Contato findById(int id) {
+    public Contato buscarPorId(int id) {
         Contato contato = null;
         try {
             PreparedStatement consulta = conector.prepararStatement("select * from agenda where id=?");
@@ -80,13 +80,13 @@ public class ContatoDAO implements DAO<Contato> {
     }
 
     @Override
-    public boolean save(Contato obj) {
+    public boolean inserir(Contato obj) {
         try {
             PreparedStatement insersao = conector.prepararStatement("insert into agenda(nome, telefone, email) values(?, ?, ?)");
             insersao.setString(1, obj.getNome());
             insersao.setString(2, obj.getTelefone());
             insersao.setString(3, obj.getEmail());
-            return insersao.execute();
+            return insersao.executeUpdate() > 0;
         } catch (SQLException ex) {
             System.out.println("Não foi possivel inserir no banco.");
         }
@@ -94,14 +94,14 @@ public class ContatoDAO implements DAO<Contato> {
     }
 
     @Override
-    public boolean update(Contato obj) {
+    public boolean atualizar(Contato obj) {
         try {
             PreparedStatement atualizacao = conector.prepararStatement("update agenda set nome=?, telefone=?, email=? where id=?");
             atualizacao.setString(1, obj.getNome());
             atualizacao.setString(2, obj.getTelefone());
             atualizacao.setString(3, obj.getEmail());
             atualizacao.setInt(4, obj.getId());
-            return atualizacao.execute();
+            return atualizacao.executeUpdate() > 0;
         } catch (SQLException ex) {
             System.out.println("Não foi possivel alterar registro do banco.");
         }
@@ -109,11 +109,11 @@ public class ContatoDAO implements DAO<Contato> {
     }
 
     @Override
-    public boolean delete(Contato obj) {
+    public boolean remover(Contato obj) {
         try {
-            PreparedStatement insersao = conector.prepararStatement("delete from agenda where id=?");
-            insersao.setInt(1, obj.getId());
-            return insersao.execute();
+            PreparedStatement remocao = conector.prepararStatement("delete from agenda where id=?");
+            remocao.setInt(1, obj.getId());
+            return remocao.executeUpdate() > 0;
         } catch (SQLException ex) {
             System.out.println("Não foi possivel apagar o registro do banco.");
         }

@@ -5,12 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ConectorMysql implements ConectorBanco {
 
-    private Connection connection;
+    private Connection conexao;
 
     static {
         try {
@@ -20,10 +18,10 @@ public class ConectorMysql implements ConectorBanco {
         }
     }
 
-    public ConectorMysql(String base, String nomeUsuario, String senha) {
+    public ConectorMysql(String nomeDaBase, String usuario, String senha) {
         try {
-            String urlBanco = String.format("jdbc:mysql://localhost:3306/%s", base);
-            connection = DriverManager.getConnection(urlBanco, nomeUsuario, senha);
+            String urlDoBanco = String.format("jdbc:mysql://localhost:3306/%s", nomeDaBase);
+            conexao = DriverManager.getConnection(urlDoBanco, usuario, senha);
         } catch (SQLException ex) {
             System.out.println("Não foi possivel conectar ao banco de dados.");
         }
@@ -32,7 +30,7 @@ public class ConectorMysql implements ConectorBanco {
     @Override
     public boolean fecharConexao() {
         try {
-            connection.close();
+            conexao.close();
         } catch (SQLException ex) {
             System.out.println("Não foi possivel finalizar a conexao do banco");
             return false;
@@ -43,7 +41,7 @@ public class ConectorMysql implements ConectorBanco {
     @Override
     public boolean estaAberta() {
         try {
-            return !connection.isClosed();
+            return !conexao.isClosed();
         } catch (SQLException ex) {
             return true;
         }
@@ -52,7 +50,7 @@ public class ConectorMysql implements ConectorBanco {
     @Override
     public Statement novoStatement() {
         try {
-            return connection.createStatement();
+            return conexao.createStatement();
         } catch (SQLException ex) {
             System.out.println("Não foi possivel criar o Statement");
         }
@@ -62,9 +60,9 @@ public class ConectorMysql implements ConectorBanco {
     @Override
     public PreparedStatement prepararStatement(String sql) {
         try {
-            return connection.prepareStatement(sql);
+            return conexao.prepareStatement(sql);
         } catch (SQLException ex) {
-            System.out.println("Não foi possivel criar o PreparedStatement");
+            System.out.println("Não foi possivel preparar um Statement");
         }
         return null;
     }
