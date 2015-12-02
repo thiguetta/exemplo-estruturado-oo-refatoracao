@@ -11,6 +11,14 @@ public class Contato {
     private String telefone;
     private String email;
 
+    public static Contato novoContatoVazio() {
+        Contato contato = new Contato();
+        contato.setEmail("");
+        contato.setNome("");
+        contato.setTelefone("");
+        return contato;
+    }
+
     public int getId() {
         return id;
     }

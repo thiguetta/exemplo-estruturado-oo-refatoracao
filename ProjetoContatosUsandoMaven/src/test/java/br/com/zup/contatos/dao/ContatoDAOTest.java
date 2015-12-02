@@ -36,7 +36,7 @@ public class ContatoDAOTest {
     public void b_testarBuscaPorNome() {
         LOGGER.info("Testando método Busca por nome.");
         List<Contato> resultadoBusca = dao.buscarPorNome(CONTATO_MOCK.getNome());
-        assertEquals(1, resultadoBusca.size());
+        assertNotEquals(0, resultadoBusca.size());
         Contato retorno = resultadoBusca.get(0);
         assertEquals(CONTATO_MOCK.getNome(), retorno.getNome());
         assertEquals(CONTATO_MOCK.getTelefone(), retorno.getTelefone());
