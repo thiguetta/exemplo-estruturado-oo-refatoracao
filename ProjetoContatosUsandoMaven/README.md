@@ -1,0 +1,13 @@
+#Instruções para execução deste projeto
+
+Antes de importar o projeto em sua IDE preferida, verifique se possua o maven instalado, caso não, acesse [esse site](https://maven.apache.org) e siga as instruções de instalação.
+
+Em seguida, importe o arquivo `agenda.sql` no seu MySQL.
+
+Na primeira execução do projeto ele irá baixar as dependências descritas no `pom.xml`. Se desejar utilizar o terminal, entre na pasta do projeto e digite o seguinte comando:
+
+```bash
+$ mvn clean install
+```
+
+Em seguida copie o arquivo `.war` gerado para a pasta de deploys do servidor de aplicação que estiver utillizando.
