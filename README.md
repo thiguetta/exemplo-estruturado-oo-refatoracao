@@ -1,3 +1,15 @@
+#Sobre o projeto
+
+Este projeto contém uma série de subprojetos apresentando a evolução do código de um projeto de Agenda de Contatos, nele poderá acompanhar como o projeto passou por melhorias tanto de código quanto de tecnologia, utilizando as mais primitivas até as mais avançadas. 
+
+##Linha do tempo
+
+- [ProjetoContato] (https://github.com/thiguetta/exemplo-estruturado-oo-refatoracao/tree/master/ProjetoContato) - Este projeto foi feito em Java puro, utilizando exibição de dados em tela (terminal), leitura do teclado (prompt) e armazenamento em arquivos texto plano.
+- [ProjetoContatoRefatorado](https://github.com/thiguetta/exemplo-estruturado-oo-refatoracao/tree/master/ProjetoContatoRefatorado) - Este projeto melhora o projeto anterior utilizando técnicas de refatoração para melhoria do código.
+- [ProjetoRefatoradoComBancoDeDados](https://github.com/thiguetta/exemplo-estruturado-oo-refatoracao/tree/master/ProjetoRefatoradoComBancoDeDados) - Este projeto complementa o projeto anterior utilizando uma biblioteca externa (inserindo o `.jar` manualmente no projeto), introduzindo uma nova forma de armazenamento de dados utilizando JDBC e MySQL.
+- [ProjetoContatosUsandoMaven](https://github.com/thiguetta/exemplo-estruturado-oo-refatoracao/tree/master/ProjetoContatosUsandoMaven) - Este projeto apresenta o conceito de controle de dependência utilizando o maven, não sendo mais necessário ter que inserir manualmente as bibliotecas externas.
+- [ContatoWeb](https://github.com/thiguetta/exemplo-estruturado-oo-refatoracao/tree/master/ContatoWeb) - Este projeto introduz uma nova forma de apresentação e interação com os dados através da web com JSP (Java Server Pages), embora seja um novo projeto, utiliza como dependência o projeto anterior.
+
 #Refatoração
 
 `Refatoração (refactoring)` é um processo de manutenção de código que todo programador deve fazer de tempos em tempos. Esse processo consiste basicamente de 3 Rs:
