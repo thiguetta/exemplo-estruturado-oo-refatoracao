@@ -4,10 +4,17 @@ Antes de importar o projeto em sua IDE preferida, verifique se possua o maven in
 
 Em seguida, importe o arquivo `agenda.sql` no seu MySQL.
 
-Na primeira execução do projeto ele irá baixar as dependências descritas no `pom.xml`. Se desejar utilizar o terminal, entre na pasta do projeto e digite o seguinte comando:
+Na primeira execução do projeto ele irá baixar as dependências descritas no `pom.xml`. 
+
+Se estiver utilizando uma IDE basta executar o projeto.
+
+Se desejar utilizar o terminal, entre na pasta do projeto e digite o seguinte comando:
 
 ```bash
 $ mvn clean install
 ```
+Para executar via terminal, ainda na pasta do projeto execute o comando:
 
-Em seguida copie o arquivo `.war` gerado para a pasta de deploys do servidor de aplicação que estiver utillizando.
+```bash
+$ java -jar target/Contatos-1.0-SNAPSHOT.jar
+```
