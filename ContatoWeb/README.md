@@ -14,4 +14,4 @@ Mas se desejar utilizar o terminal, entre na pasta do projeto e digite o seguint
 $ mvn clean install
 ```
 
-Em seguida copie o arquivo `.war` gerado para a pasta de deploys do servidor de aplicação que estiver utillizando.
+Em seguida copie o arquivo `ContatoWeb-1.0-SNAPSHOT.war` gerado dentro da pasta `target` para a pasta de deploys do servidor de aplicação que estiver utillizando.
