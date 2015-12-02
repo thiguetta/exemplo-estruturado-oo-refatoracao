@@ -1,7 +1,7 @@
-package br.com.zup.contatos.dao;
+package br.com.arquivolivre.contatos.dao;
 
-import br.com.zup.contatos.db.ConectorBanco;
-import br.com.zup.contatos.modelo.Contato;
+import br.com.arquivolivre.contatos.db.ConectorBanco;
+import br.com.arquivolivre.contatos.modelo.Contato;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

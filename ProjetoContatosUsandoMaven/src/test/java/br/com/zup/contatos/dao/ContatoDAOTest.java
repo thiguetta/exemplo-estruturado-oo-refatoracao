@@ -1,7 +1,8 @@
 package br.com.zup.contatos.dao;
 
-import br.com.zup.contatos.db.ConectorMysql;
-import br.com.zup.contatos.modelo.Contato;
+import br.com.arquivolivre.contatos.dao.ContatoDAO;
+import br.com.arquivolivre.contatos.db.ConectorMysql;
+import br.com.arquivolivre.contatos.modelo.Contato;
 import java.util.List;
 import java.util.logging.Logger;
 import static org.junit.Assert.*;

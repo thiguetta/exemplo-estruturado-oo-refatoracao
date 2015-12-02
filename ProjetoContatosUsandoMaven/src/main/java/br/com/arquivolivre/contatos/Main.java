@@ -1,9 +1,9 @@
-package br.com.zup.contatos;
+package br.com.arquivolivre.contatos;
 
-import br.com.zup.contatos.dao.ContatoDAO;
-import br.com.zup.contatos.db.ConectorBanco;
-import br.com.zup.contatos.db.ConectorMysql;
-import br.com.zup.contatos.modelo.Contato;
+import br.com.arquivolivre.contatos.dao.ContatoDAO;
+import br.com.arquivolivre.contatos.db.ConectorBanco;
+import br.com.arquivolivre.contatos.db.ConectorMysql;
+import br.com.arquivolivre.contatos.modelo.Contato;
 import java.util.List;
 import java.util.Scanner;
 

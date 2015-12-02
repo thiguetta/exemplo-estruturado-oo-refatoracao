@@ -1,6 +1,6 @@
-package br.com.zup.contatos;
+package br.com.arquivolivre.contatos;
 
-import br.com.zup.contatos.modelo.Contato;
+import br.com.arquivolivre.contatos.modelo.Contato;
 import java.util.Scanner;
 
 public class LeitorContato {

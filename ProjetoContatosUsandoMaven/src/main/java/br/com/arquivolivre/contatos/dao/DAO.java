@@ -1,4 +1,4 @@
-package br.com.zup.contatos.dao;
+package br.com.arquivolivre.contatos.dao;
 
 import java.util.List;
 

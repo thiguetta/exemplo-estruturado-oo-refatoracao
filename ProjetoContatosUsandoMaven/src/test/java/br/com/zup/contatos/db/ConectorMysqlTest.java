@@ -1,5 +1,6 @@
 package br.com.zup.contatos.db;
 
+import br.com.arquivolivre.contatos.db.ConectorMysql;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;

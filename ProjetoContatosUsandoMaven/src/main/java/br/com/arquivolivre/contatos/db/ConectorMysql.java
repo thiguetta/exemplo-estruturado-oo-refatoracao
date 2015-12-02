@@ -1,4 +1,4 @@
-package br.com.zup.contatos.db;
+package br.com.arquivolivre.contatos.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

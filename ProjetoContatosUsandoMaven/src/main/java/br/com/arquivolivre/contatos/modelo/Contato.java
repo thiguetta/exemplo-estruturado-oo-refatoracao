@@ -1,4 +1,4 @@
-package br.com.zup.contatos.modelo;
+package br.com.arquivolivre.contatos.modelo;
 
 /**
  *
