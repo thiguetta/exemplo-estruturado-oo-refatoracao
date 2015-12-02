@@ -19,3 +19,7 @@ PS: se preciso ler do arquivo e salvar no arquivo, atribua os métodos a uma cla
 
 PS2: sempre que uma classe, método ou variável não fizer sentido, refatore! =D
 
+#Atenção
+
+Para executar esses projetos será necessário JDK 1.8+, certifique-se de instala-los em sua máquina, é possível obter o JDK [neste site](http://www.oracle.com/technetwork/java/javase/downloads).
+
