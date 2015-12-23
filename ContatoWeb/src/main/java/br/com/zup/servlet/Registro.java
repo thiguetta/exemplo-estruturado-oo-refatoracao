@@ -1,6 +1,6 @@
 package br.com.zup.servlet;
 
-import br.com.arquivolivre.contatos.modelo.Pessoa;
+import br.com.arquivolivre.contatos.modelo.Contato;
 import br.com.zup.controller.ContatosController;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -22,7 +22,7 @@ public class Registro extends HttpServlet {
 
         ContatosController controller = new ContatosController();
 
-        Pessoa contato = new Pessoa();
+        Contato contato = new Contato();
         contato.setId(idInt);
         contato.setNome(nome);
         contato.setTelefone(telefone);
