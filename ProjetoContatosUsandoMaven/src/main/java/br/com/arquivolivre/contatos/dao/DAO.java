@@ -8,11 +8,11 @@ public interface DAO<T> {
 
     List<T> buscarPorNome(String nome);
 
-    T buscarPorId(int id);
+    T buscarPorId(Long id);
 
-    boolean inserir(T obj);
+    void inserir(T obj);
 
-    boolean atualizar(T obj);
+    void atualizar(T obj);
 
-    boolean remover(T obj);
+    void remover(T obj);
 }
