@@ -1,6 +1,5 @@
 package br.com.arquivolivre.contatos.dao.impl;
 
-import br.com.arquivolivre.contatos.dao.CRUD;
 import br.com.arquivolivre.contatos.modelo.Pessoa;
 import java.util.List;
 
@@ -8,7 +7,7 @@ import java.util.List;
  *
  * @author Thiago Gonzaga <thi_gonzaga@yahoo.com.br>
  */
-public class PessoaDAO extends AbstractCRUD<Pessoa, Long> implements CRUD<Pessoa, Long> {
+public class PessoaDAO extends AbstractCRUD<Pessoa, Long> {
 
     public List<Pessoa> buscarPorNome(String nome) {
         return entityManager
