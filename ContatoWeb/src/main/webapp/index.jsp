@@ -1,5 +1,10 @@
+<%-- 
+    Document   : index
+    Created on : 01/12/2015, 21:19:24
+    Author     : diemerson
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,11 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Bem-vindo ao cadastro de contatos</h1>
         <nav>
             <ul>
-                <li><a href="lista_contatos.jsp">Lista Contatos</a></li>
-                <li><a href="contato.jsp">Novo contato</a></li>
+                <li><a href="listaContatos.jsp">Lista Contatos</a></li>
+                <li><a href="contato.jsp">Novo Contato</a></li>
             </ul>
         </nav>
     </body>
