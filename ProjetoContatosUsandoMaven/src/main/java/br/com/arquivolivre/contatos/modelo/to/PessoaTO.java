@@ -1,6 +1,9 @@
 package br.com.arquivolivre.contatos.modelo.to;
 
+import br.com.arquivolivre.contatos.modelo.Endereco;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -15,6 +18,7 @@ public class PessoaTO {
     private Long cpf;
     private Date dn;
     private Boolean a = true;
+    private List<Endereco> enderecos;
 
     public Long getCodigo() {
         return codigo;
@@ -67,6 +71,12 @@ public class PessoaTO {
     public void setA(Boolean a) {
         this.a = a;
     }
-    
-    
+
+    public void addEndereco(Endereco endereco) {
+        if (enderecos == null) {
+            enderecos = new ArrayList<>();
+        }
+        enderecos.add(endereco);
+    }
+
 }
