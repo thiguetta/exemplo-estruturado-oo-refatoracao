@@ -63,7 +63,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>br.com.zup.contatos.Main</mainClass>
+                            <!--<mainClass>br.com.zup.contatos.Main</mainClass>-->
                         </manifest>
                     </archive>
                 </configuration>
