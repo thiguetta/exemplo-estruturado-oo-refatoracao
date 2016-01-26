@@ -12,6 +12,10 @@ import java.util.List;
 public class PessoaTO {
 
     private Long codigo;
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
     private String nome;
     private String tel;
     private String email;
@@ -23,6 +27,8 @@ public class PessoaTO {
     public Long getCodigo() {
         return codigo;
     }
+    
+    
 
     public String getNome() {
         return nome;

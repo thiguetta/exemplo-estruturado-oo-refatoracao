@@ -1,6 +1,6 @@
 package br.com.zup.servlet;
 
-import br.com.arquivolivre.contatos.modelo.Contato;
+import br.com.arquivolivre.contatos.modelo.to.PessoaTO;
 import br.com.zup.controller.ContatosController;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -18,14 +18,14 @@ public class Registro extends HttpServlet {
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
         String telefone = request.getParameter("telefone");
-        Integer idInt = id == null ? null : Integer.parseInt(id);
+        Long idLong = id == null ? null : Long.parseLong(id);
 
         ContatosController controller = new ContatosController();
 
-        Contato contato = new Contato();
-        contato.setId(idInt);
+        PessoaTO contato = new PessoaTO();
+        contato.setCodigo(idLong);
         contato.setNome(nome);
-        contato.setTelefone(telefone);
+        contato.setTel(telefone);
         contato.setEmail(email);
         controller.salvar(contato);
 

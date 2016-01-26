@@ -1,40 +1,39 @@
 package br.com.zup.controller;
 
-import br.com.arquivolivre.contatos.dao.ContatoDAO;
-import br.com.arquivolivre.contatos.db.ConectorBanco;
-import br.com.arquivolivre.contatos.db.ConectorMysql;
-import br.com.arquivolivre.contatos.modelo.Contato;
+import br.com.arquivolivre.contatos.dao.impl.PessoaDAO;
+import br.com.arquivolivre.contatos.modelo.to.PessoaTO;
+import br.com.arquivolivre.contatos.servico.PessoaService;
 import java.util.List;
 
 public class ContatosController {
 
-    private final ContatoDAO contatoDAO;
+    private final PessoaService pessoaService;
 
     public ContatosController() {
-        ConectorBanco conector = new ConectorMysql("contatos", "root", "klapa22");
-        contatoDAO = new ContatoDAO(conector);
+        PessoaDAO pessoaDAO = new PessoaDAO();
+        pessoaService = new PessoaService(pessoaDAO);
     }
 
-    public List<Contato> listarTodos() {
-        return contatoDAO.listarTodos();
+    public List<PessoaTO> listarTodos() {
+        return pessoaService.listarTodos();
     }
 
-    public Contato getContato(String id) {
+    public PessoaTO getContato(String id) {
         if (id == null) {
-            return Contato.novoContatoVazio();
+            return new PessoaTO();
         }
-        return contatoDAO.buscarPorId(Integer.parseInt(id));
+        return pessoaService.buscarPorId(Long.parseLong(id));
     }
 
-    public void salvar(Contato contato) {
-        if (contato.getId() == 0) {
-            contatoDAO.inserir(contato);
+    public void salvar(PessoaTO contato) {
+        if (contato.getCodigo() == 0) {
+            pessoaService.inserir(contato);
         } else {
-            contatoDAO.atualizar(contato);
+            pessoaService.atualizar(contato);
         }
     }
 
-    public void remover(Contato contato) {
-        contatoDAO.remover(contato);
+    public void remover(Long id) {
+        pessoaService.remover(id);
     }
 }

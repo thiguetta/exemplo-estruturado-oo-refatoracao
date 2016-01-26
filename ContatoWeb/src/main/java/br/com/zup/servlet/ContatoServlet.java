@@ -1,6 +1,6 @@
 package br.com.zup.servlet;
 
-import br.com.arquivolivre.contatos.modelo.Contato;
+import br.com.arquivolivre.contatos.modelo.to.PessoaTO;
 import br.com.zup.controller.ContatosController;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -16,7 +16,7 @@ public class ContatoServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         ContatosController controller = new ContatosController();
-        Contato contato = controller.getContato(id);
+        PessoaTO contato = controller.getContato(id);
         request.setAttribute("contato", contato);
         request.getRequestDispatcher("contato.jsp").forward(request, response);
     }
