@@ -1,55 +1,54 @@
 package br.com.arquivolivre.contatos;
 
-import br.com.arquivolivre.contatos.dao.ContatoDAO;
-import br.com.arquivolivre.contatos.db.ConectorBanco;
-import br.com.arquivolivre.contatos.db.ConectorMysql;
-import br.com.arquivolivre.contatos.modelo.Contato;
-import java.util.List;
-import java.util.Scanner;
+import br.com.arquivolivre.contatos.dao.impl.PessoaDAO;
+import br.com.arquivolivre.contatos.modelo.Cidade;
+import br.com.arquivolivre.contatos.modelo.Endereco;
+import br.com.arquivolivre.contatos.modelo.Estado;
+import br.com.arquivolivre.contatos.modelo.Logradouro;
+import br.com.arquivolivre.contatos.modelo.to.PessoaTO;
+import br.com.arquivolivre.contatos.servico.PessoaService;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
+        PessoaDAO dao = new PessoaDAO();
+        PessoaService service = new PessoaService(dao);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
-        //ler arquivo
-//        ArquivoContato arquivo = new ArquivoContato("arquivo.txt");
-//        Contatos contatos = new Contatos(arquivo.lerContatosDoArquivo());
-        //conexao com o banco;
-        ConectorBanco conector = new ConectorMysql("contatos", "root", "klapa22");
-        ContatoDAO contatoDAO = new ContatoDAO(conector);
-        LeitorContato leitor = new LeitorContato();
-        int opcao = 0;
-        Scanner scanner = new Scanner(System.in);
-        while (opcao != 3) {
-            imprimirOpcoes();
-            opcao = Integer.parseInt(scanner.nextLine());
-            switch (opcao) {
-                case 1:
-                    contatoDAO.inserir(leitor.lerContatoDoTeclado());
-                    break;
-                case 2:
-                    System.out.print("Digite o nome da pessoa: ");
-                    List<Contato> contatoPorNome = contatoDAO.buscarPorNome(scanner.nextLine());
-                    for (Contato contato : contatoPorNome) {
-                        System.out.println(contato);
-                    }
-                    break;
-                case 3:
-                    break;
-            }
-        }
-        // salvar arquivo
-        //arquivo.salvarContatosNoArquivo(contatos);
+        PessoaTO pessoa = new PessoaTO();
+        pessoa.setNome("Fulano de tal");
+        pessoa.setCpf(12345678911l);
+        pessoa.setDn(formatter.parse("10/10/1988"));
 
-        //fechar a conexao com o banco
-        conector.fecharConexao();
+        Endereco endereco = new Endereco();
+        endereco.setNumero("11");
 
-    }
+        Logradouro logradouro = new Logradouro();
 
-    private static void imprimirOpcoes() {
-        System.out.println("1-Cadastrar novo contato");
-        System.out.println("2-Visualizar contato");
-        System.out.println("3-Sair");
-        System.out.print("Digite sua opção: ");
+        logradouro.setLogradouro("Rua Fulano de tal");
+        logradouro.setBairro("Bairro");
+        logradouro.setCep(15010000l);
+
+        Cidade cidade = new Cidade();
+        cidade.setNome("São José do Rio Preto");
+
+        Estado estado = new Estado();
+        estado.setUf("SP");
+        estado.setDescricao("São Paulo");
+
+        cidade.setEstado(estado);
+
+        logradouro.setCidade(cidade);
+
+        endereco.setLogradouro(logradouro);
+
+        pessoa.addEndereco(endereco);
+
+        service.inserir(pessoa);
+
+        System.out.println(service.listarTodos());
+
     }
 }
