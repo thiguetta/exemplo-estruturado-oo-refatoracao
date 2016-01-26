@@ -9,6 +9,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -30,7 +31,7 @@ import javax.persistence.TemporalType;
 public class Pessoa implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length = 80, nullable = false)
@@ -53,8 +54,8 @@ public class Pessoa implements Serializable {
     @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
     private List<Endereco> enderecos;
 
-    protected Pessoa(){
-        
+    protected Pessoa() {
+
     }
 
     Pessoa(String nome, String telefone, String email, Long cpf, Date dataNascimento, Boolean ativo, List<Endereco> enderecos) {
@@ -66,9 +67,7 @@ public class Pessoa implements Serializable {
         this.ativo = ativo;
         this.enderecos = enderecos;
     }
-    
-    
-    
+
     public Long getId() {
         return id;
     }
