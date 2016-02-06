@@ -30,7 +30,10 @@ public class PessoaService implements CrudService<PessoaDAO, PessoaTO> {
 
     @Override
     public void atualizar(PessoaTO src) {
-        dao.atualizar(converter(src));
+        Pessoa pessoa = dao.buscaPorId(src.getCodigo());
+        Pessoa atualizado = converter(src);
+        pessoa.merge(atualizado);
+        dao.atualizar(pessoa);
     }
 
     @Override
@@ -61,6 +64,7 @@ public class PessoaService implements CrudService<PessoaDAO, PessoaTO> {
 
     private PessoaTO converter(Pessoa pessoa) {
         PessoaTO pessoaTO = new PessoaTO();
+        pessoaTO.setCodigo(pessoa.getId());
         pessoaTO.setNome(pessoa.getNome());
         pessoaTO.setTel(pessoa.getTelefone());
         pessoaTO.setCpf(pessoa.getCpf());

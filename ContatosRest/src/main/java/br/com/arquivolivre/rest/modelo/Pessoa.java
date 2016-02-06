@@ -1,6 +1,7 @@
 package br.com.arquivolivre.rest.modelo;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -153,6 +154,30 @@ public class Pessoa implements Serializable {
     @Override
     public String toString() {
         return "Pessoa{" + "id=" + id + ", nome=" + nome + ", telefone=" + telefone + ", email=" + email + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento + ", ativo=" + ativo + ", enderecos=" + enderecos + '}';
+    }
+
+    public void merge(Pessoa p) {
+//        this.ativo = p.ativo;
+//        this.cpf = p.cpf;
+//        this.dataNascimento = p.dataNascimento;
+//        this.email = p.email;
+//        this.telefone = p.telefone;
+//        this.enderecos = p.enderecos
+//        this.nome = p.nome;
+
+        Field[] campos = this.getClass().getDeclaredFields();
+        for (Field campo : campos) {
+            try {
+                Object esta = campo.get(this);
+                Object outra = campo.get(p);
+                if (!esta.equals(outra) && !"id".equals(campo.getName())) {
+                    campo.set(this, outra);
+                }
+            } catch (IllegalAccessException | IllegalArgumentException ex) {
+
+            }
+        }
+
     }
 
 }

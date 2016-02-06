@@ -4,6 +4,7 @@ import br.com.arquivolivre.rest.modelo.to.PessoaTO;
 import br.com.arquivolivre.rest.servico.PessoaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,6 +29,16 @@ public class ControladorPessoa {
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
     public void salvarPessoa(@RequestBody PessoaTO pessoa) {
         service.inserir(pessoa);
+    }
+
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET, produces = "application/json")
+    public PessoaTO buscarPorId(@PathVariable Long id) {
+        return service.buscarPorId(id);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, consumes = "application/json")
+    public void atualizarPessoa(@RequestBody PessoaTO pessoa) {
+        service.atualizar(pessoa);
     }
 
 }
