@@ -41,4 +41,8 @@ public class ControladorPessoa {
         service.atualizar(pessoa);
     }
 
+    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+    public void remover(@PathVariable Long id){
+        service.remover(id);
+    }
 }
