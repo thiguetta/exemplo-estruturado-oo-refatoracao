@@ -42,16 +42,16 @@ public class PessoaBuilder {
         return this;
     }
 
-    public PessoaBuilder noEndereco(Endereco endereco){
-        if(enderecos==null){
+    public PessoaBuilder noEndereco(Endereco endereco) {
+        if (enderecos == null) {
             enderecos = new ArrayList<>();
         }
         enderecos.add(endereco);
         return this;
     }
-    
+
     public PessoaBuilder ativo(Boolean ativo) {
-        this.ativo = ativo; 
+        this.ativo = ativo;
         return this;
     }
 

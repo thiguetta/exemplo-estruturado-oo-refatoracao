@@ -1,12 +1,15 @@
 package br.com.arquivolivre.rest;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.sql.DataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  *
@@ -14,13 +17,31 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableAutoConfiguration
+@EnableTransactionManagement
 @ComponentScan("br.com.arquivolivre")
 public class ApplicationConfig {
 
-    private final EntityManagerFactory EMF = Persistence.createEntityManagerFactory("unidadePersistencia");
+    @Bean
+    public LocalEntityManagerFactoryBean entityManagerFactory() {
+        LocalEntityManagerFactoryBean emf = new LocalEntityManagerFactoryBean();
+        emf.setPersistenceUnitName("unidadePersistencia");
+        return emf;
+    }
+
+//    @Bean
+//    @Autowired
+//    public EntityManager entityManager(EntityManagerFactory emf){
+//        return emf.createEntityManager();
+//    }
+    @Bean
+    @Autowired
+    public DataSource dataSource(LocalEntityManagerFactoryBean emf) {
+        return emf.getDataSource();
+    }
 
     @Bean
-    public EntityManager entityManager() {
-        return EMF.createEntityManager();
+    public PlatformTransactionManager transactionManager() {
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        return transactionManager;
     }
 }

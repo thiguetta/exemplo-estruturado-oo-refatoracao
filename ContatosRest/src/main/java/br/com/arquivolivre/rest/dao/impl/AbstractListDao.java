@@ -3,6 +3,7 @@ package br.com.arquivolivre.rest.dao.impl;
 import br.com.arquivolivre.rest.dao.ListDAO;
 import java.lang.reflect.ParameterizedType;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -12,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public abstract class AbstractListDao<K, T>
         implements ListDAO<K, T> {
 
-    @Autowired
+    @PersistenceContext
     protected EntityManager entityManager;
     private final Class<K> type;
 
@@ -23,13 +24,5 @@ public abstract class AbstractListDao<K, T>
     @Override
     public K buscaPorId(T id) {
         return entityManager.find(type, id);
-    }
-
-    protected void commit() {
-        entityManager.getTransaction().commit();
-    }
-
-    protected void begin() {
-        entityManager.getTransaction().begin();
     }
 }

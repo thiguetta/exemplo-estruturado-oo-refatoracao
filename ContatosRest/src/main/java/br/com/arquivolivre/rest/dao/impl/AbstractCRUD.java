@@ -12,23 +12,17 @@ public abstract class AbstractCRUD<K, T>
 
     @Override
     public void inserir(K obj) {
-        begin();
         entityManager.persist(obj);
-        commit();
     }
 
     @Override
     public void remover(K obj) {
-        begin();
         entityManager.remove(obj);
-        commit();
 
     }
 
     @Override
     public void atualizar(K obj) {
-        begin();
         entityManager.merge(obj);
-        commit();
     }
 }

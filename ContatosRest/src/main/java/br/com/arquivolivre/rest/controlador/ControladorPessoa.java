@@ -1,6 +1,7 @@
 package br.com.arquivolivre.rest.controlador;
 
 import br.com.arquivolivre.rest.modelo.to.PessoaTO;
+import br.com.arquivolivre.rest.servico.IPessoaService;
 import br.com.arquivolivre.rest.servico.PessoaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ControladorPessoa {
 
     @Autowired
-    private PessoaService service;
+    private IPessoaService service;
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public List<PessoaTO> listarTodos() {
@@ -42,7 +43,7 @@ public class ControladorPessoa {
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
-    public void remover(@PathVariable Long id){
+    public void remover(@PathVariable Long id) {
         service.remover(id);
     }
 }

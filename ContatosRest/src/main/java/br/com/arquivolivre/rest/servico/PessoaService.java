@@ -7,27 +7,32 @@ import br.com.arquivolivre.rest.modelo.to.PessoaTO;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author zupsjrp
  */
 @org.springframework.stereotype.Service
-public class PessoaService implements CrudService<PessoaDAO, PessoaTO> {
+public class PessoaService implements IPessoaService {
 
     @Autowired
     private PessoaDAO dao;
 
+    @Transactional
     public void remover(Long id) {
         Pessoa pessoa = dao.buscaPorId(id);
         dao.remover(pessoa);
     }
 
+    @Transactional
     @Override
     public void inserir(PessoaTO src) {
         dao.inserir(converter(src));
     }
 
+    @Transactional
     @Override
     public void atualizar(PessoaTO src) {
         Pessoa pessoa = dao.buscaPorId(src.getCodigo());
@@ -36,16 +41,19 @@ public class PessoaService implements CrudService<PessoaDAO, PessoaTO> {
         dao.atualizar(pessoa);
     }
 
+    @Transactional
     @Override
     public void remover(PessoaTO src) {
         dao.remover(converter(src));
     }
 
+    @Transactional(propagation = Propagation.SUPPORTS)
     @Override
     public List<PessoaTO> listarTodos() {
         return converterLista(dao.listarTodos());
     }
 
+    @Transactional(propagation = Propagation.SUPPORTS)
     @Override
     public PessoaTO buscarPorId(Long id) {
         return converter(dao.buscaPorId(id));
