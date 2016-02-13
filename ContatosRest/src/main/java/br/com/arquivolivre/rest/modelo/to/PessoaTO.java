@@ -1,15 +1,17 @@
 package br.com.arquivolivre.rest.modelo.to;
 
-import br.com.arquivolivre.rest.modelo.Endereco;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author zupsjrp
  */
-public class PessoaTO {
+@XmlRootElement
+public class PessoaTO implements Serializable{
 
     private Long codigo;
     private String nome;
@@ -18,7 +20,7 @@ public class PessoaTO {
     private Long cpf;
     private Date dn;
     private Boolean a = true;
-    private List<Endereco> enderecos;
+    private List<EnderecoTO> enderecos;
 
     public void setCodigo(Long codigo) {
         this.codigo = codigo;
@@ -76,7 +78,7 @@ public class PessoaTO {
         this.a = a;
     }
 
-    public void addEndereco(Endereco endereco) {
+    public void addEndereco(EnderecoTO endereco) {
         if (enderecos == null) {
             enderecos = new ArrayList<>();
         }

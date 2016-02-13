@@ -1,11 +1,13 @@
 package br.com.arquivolivre.rest.modelo.to;
 
 import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Thiago Gonzaga <thi_gonzaga@yahoo.com.br>
  */
+@XmlRootElement
 public class EnderecoTO implements Serializable {
 
     private int id;

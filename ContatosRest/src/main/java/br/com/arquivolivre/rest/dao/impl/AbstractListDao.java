@@ -24,12 +24,4 @@ public abstract class AbstractListDao<K, T>
     public K buscaPorId(T id) {
         return entityManager.find(type, id);
     }
-
-    protected void commit() {
-        entityManager.getTransaction().commit();
-    }
-
-    protected void begin() {
-        entityManager.getTransaction().begin();
-    }
 }
