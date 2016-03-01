@@ -7,7 +7,6 @@ import com.arquivolivre.contatos.modelo.Produto;
 import com.arquivolivre.contatos.servico.ProdutoService;
 
 @Resource
-@Path("/produto")
 public class ProdutoController {
 
     private final ProdutoService service;
@@ -19,11 +18,9 @@ public class ProdutoController {
 
     }
 
-    @Path("/")
     public void index() {
     }
 
-    @Path("/cadastro")
     public void cadastro(Produto produto) {
         service.cadastrarProduto(produto);
     }
