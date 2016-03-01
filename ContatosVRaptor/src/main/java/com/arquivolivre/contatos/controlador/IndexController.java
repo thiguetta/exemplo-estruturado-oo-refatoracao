@@ -14,11 +14,14 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.arquivolivre.contatos;
+package com.arquivolivre.contatos.controlador;
 
+import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import java.util.HashMap;
+import java.util.Map;
 
 @Resource
 public class IndexController {
@@ -32,6 +35,14 @@ public class IndexController {
     @Path("/")
     public void index() {
         result.include("variable", "VRaptor!");
+    }
+    
+    @Path("/listaContato")
+    public void listaContato(){
+        Map<String, String> map = new HashMap<>();
+        map.put("nome", "Teste");
+        map.put("telefone", "telefone");
+        result.include("mapa", map);
     }
 
 }
